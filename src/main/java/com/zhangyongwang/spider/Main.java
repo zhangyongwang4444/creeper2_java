@@ -23,7 +23,7 @@ public class Main {
         // 广度优先搜索
         Queue<NewsWithRelated> newsQueue = new LinkedList<NewsWithRelated>();
 
-        String startUrl = "https://readhub.me/topic/5bMmlAm75lD";   // 爬这里的内容 ....
+        String startUrl = "https://readhub.cn/topic/7Kwq2NDQYxp";   // 爬这里的内容 ....
         NewsWithRelated startNews = UrlNewsReader.read(startUrl);
 
         int count = 0;

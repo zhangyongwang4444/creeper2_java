@@ -15,7 +15,7 @@ public class UrlNewsReader {
 
         // 看 jsoup 文档 ，敲代码 ，预计时间 2 天
         Document doc = Jsoup.connect(url).get();
-        Elements titleElements = doc.select("title");
+        Elements titleElements = doc.select("title");  // <head><title></title></head>
         String title = titleElements.first().text();
         String content = doc.select("meta[name=description]").attr("content");
 
@@ -32,11 +32,11 @@ public class UrlNewsReader {
 
         NewsWithRelated news = new NewsWithRelated(url, title, content);
 
-        Elements relatedElements = doc.select(".timeline__item___2luxn");
+        Elements relatedElements = doc.select(".row___3h219");
         for (Element element : relatedElements) {
-            String relatedTitle = element.select(".content-item___2j97j").text();
+            String relatedTitle = element.select(".url___3iQHY").text();
             Elements children = element.children();
-            String relatedUrl = children.get(3).child(0).absUrl("href");
+            String relatedUrl = children.get(0).absUrl("href");
 
             news.addRelated(relatedTitle, relatedUrl);
         }
