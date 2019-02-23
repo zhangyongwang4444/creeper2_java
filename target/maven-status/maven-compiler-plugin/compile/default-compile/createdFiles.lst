@@ -1,0 +1,14 @@
+com\zhangyongwang\spider\model\NewsWithRelated.class
+com\zhangyongwang\spider\model\UrlNews.class
+com\zhangyongwang\spider\model\News.class
+com\zhangyongwang\spider\MultiThreadMain.class
+com\zhangyongwang\spider\model\NewsReader.class
+com\zhangyongwang\spider\model\SearchSate.class
+com\zhangyongwang\spider\Main.class
+com\zhangyongwang\spider\view\ListViewer.class
+com\zhangyongwang\spider\model\UrlNewsReader.class
+com\zhangyongwang\spider\model\Viewable.class
+com\zhangyongwang\spider\model\NewsFactory.class
+com\zhangyongwang\spider\model\JsonNewsReader.class
+com\zhangyongwang\spider\activiy\SpiderThread.class
+com\zhangyongwang\spider\model\TextNewsReader.class
