@@ -21,16 +21,16 @@ public class Main {
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
         // 广度优先搜索
-        Queue<NewsWithRelated> newsQueue = new LinkedList<NewsWithRelated>();
+        Queue<NewsWithRelated> newsQueue = new LinkedList<NewsWithRelated>();  // 共享
 
         String startUrl = "https://readhub.cn/topic/7Kwq2NDQYxp";   // 爬这里的内容 ....
         NewsWithRelated startNews = UrlNewsReader.read(startUrl);
 
-        int count = 0;
-        Set<String> visited = new HashSet<>();  // 标记 已经访问过的 URL
+        int count = 0;  // 共享
+        Set<String> visited = new HashSet<>();     // 共享  // 标记 已经访问过的 URL
         visited.add(startUrl);
         newsQueue.add(startNews);
-        ArrayList<Viewable> results = new ArrayList<>();  // 存储 扫描到的内容 （多态）
+        ArrayList<Viewable> results = new ArrayList<>();   // 共享// 存储 扫描到的内容 （多态）
 
         // 广度优先搜索 的 model
         while (!newsQueue.isEmpty() && count <= maximumURL) {
@@ -39,6 +39,8 @@ public class Main {
             count += 1;
             for (Map.Entry<String, String> entry : current.getRelateds().entrySet()) {
                 String url = entry.getValue();
+
+                //可以并行点
                 NewsWithRelated next = UrlNewsReader.read(url);
                 if (!visited.contains(url)) {
                     newsQueue.add(next);
@@ -52,6 +54,7 @@ public class Main {
 
         new ListViewer(results).display();
 
+       
         System.out.println("程序运行时间： " + (endTime - startTime) + "ms");
     }
 }

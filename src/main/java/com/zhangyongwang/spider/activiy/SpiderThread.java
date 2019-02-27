@@ -21,7 +21,7 @@ public class SpiderThread extends Thread {
     @Override
     public void run() {
         try {
-            NewsWithRelated next = UrlNewsReader.read(url);
+            NewsWithRelated next = UrlNewsReader.read(url);  //  涉及网络访问 ，耗时
             searchSate.visit(next);
         } catch (IOException e) {
             System.out.println("Ignored an error page: " + url);

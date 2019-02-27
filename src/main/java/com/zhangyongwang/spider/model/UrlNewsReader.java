@@ -32,11 +32,11 @@ public class UrlNewsReader {
 
         NewsWithRelated news = new NewsWithRelated(url, title, content);
 
-        Elements relatedElements = doc.select(".row___3h219");
+        Elements relatedElements = doc.select(".timeline__item___2luxn");
         for (Element element : relatedElements) {
-            String relatedTitle = element.select(".url___3iQHY").text();
+            String relatedTitle = element.select(".content-item___2j97j").text();
             Elements children = element.children();
-            String relatedUrl = children.get(0).absUrl("href");
+            String relatedUrl = children.get(3).child(0).absUrl("href");
 
             news.addRelated(relatedTitle, relatedUrl);
         }
